@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+    <header id="page-header">
+        <div class="container my-5 bg-light p-4 rounded">
+            <div class="row">
+                <div class="col-md-6 m-auto text-center">
+                    <h1 class="fst-italic">EXVS Management</h1>
+                    <p>日々の戦績とお金を管理</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <p><em>EXVS Mangagement</em>では、日付と戦績を入力することで、使用した金額も管理することができます.</p>
+            </div>
+        </div>
+        
+        {% if not current_user.is_authenticated %}
+        <div class="container my-5 bg-light p-4 rounded">
+            <div class="row">
+                <div class="col-md-6 m-auto text-center">
+                    <div class="row text-center">
+                        <div class="col-md-6">
+                            <p>初めての方はこちらからユーザー登録をして下さい.</p>
+                            <a href="{{ url_for('users.register') }}" class="btn btn-primary btn-block mb-3">ユーザー登録</a>
+                        </div>
+                        <div class="col-md-6">
+                            <p>ユーザー登録済みの方はこちらからログインして下さい.</p>
+                            <a href="{{ url_for('users.login') }}" class="btn btn-primary btn-block mb-3">ログイン</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- ページ詳細 -->
+    {% if current_user.is_authenticated %}
+    <div class="container my-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+                <a href="{{ url_for('main.record_register', user_id=current_user.id) }}" class="btn btn-lg btn-success">戦績と使用金額を登録する</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
