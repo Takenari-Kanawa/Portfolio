@@ -35,7 +35,7 @@ if uri:
 # ローカルでアプリを実行するとURIには値が設定されない
 else:
     # ifで行った設定を直接行う
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:moneyring1368@localhost'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password'
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
